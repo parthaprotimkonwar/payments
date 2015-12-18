@@ -24,6 +24,7 @@ public class InitializePGCache {
 		try {
 			List<PaymentGatewayInfo> pgInfos = servicesFactory.paymentGatewayInfoService.allPaymentGateways();
 			PaymentGatewayCache.getInstance().initializePaymentGatewayCache(pgInfos);
+			System.out.println("********************PG Cache Initialized !!!");
 		} catch (BaseException e) {
 			e.printStackTrace();
 		}

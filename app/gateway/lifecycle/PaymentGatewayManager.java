@@ -10,6 +10,14 @@ public class PaymentGatewayManager {
 	Map<String, PaymentGateway> cachedPaymentGateways = new HashMap<>();
 	Object lock = new Object();
 	
+	private static PaymentGatewayManager manager = new PaymentGatewayManager();
+	
+	private PaymentGatewayManager() {}
+	
+	public static PaymentGatewayManager getInstance() {
+		return manager;
+	}
+	
 	/**
 	 * Method to get the Payment Gateway instance
 	 * @param pgId

@@ -30,6 +30,5 @@ public class PersonServiceImpl implements PersonServiceI{
 	@Override
 	public List<Person> persons() {
 		return personRepository.findAll();
-	}
-	
+	}	
 }

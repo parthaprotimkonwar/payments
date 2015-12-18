@@ -35,6 +35,10 @@ public class PaymentGatewayCache {
 		return pgCache.values();
 	}
 	
+	public PaymentGatewayInfoBean paymentGatewayInfo(String key){
+		return pgCache.get(key);
+	}
+	
 	public static void main(String[] args) {
 
 		PaymentGatewayInfoBean pgInfoBean = new PaymentGatewayInfoBean();
