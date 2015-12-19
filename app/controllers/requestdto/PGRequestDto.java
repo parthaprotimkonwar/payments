@@ -2,6 +2,6 @@ package controllers.requestdto;
 
 public class PGRequestDto {
 
-	public String tokenId;
+	public String token;
 	public String pgId;
 }

@@ -1,12 +1,12 @@
-package gateway.cache;
+package gateway.bean;
 
 import models.PaymentGatewayInfo;
 
 public class PaymentGatewayInfoBean {
 
 	public PaymentGatewayInfoBean() {
-		// TODO Auto-generated constructor stub
 	}
+	
 	public PaymentGatewayInfoBean(PaymentGatewayInfo paymentGatwayInfo) {
 		this.pgId = paymentGatwayInfo.pgId;
 		this.pgName = paymentGatwayInfo.pgName;

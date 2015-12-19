@@ -17,6 +17,14 @@ import utilities.Constants;
 @Table(name="PAYMENTS", schema=Constants.SCHEMA_NAME_PAYMENT)
 public class Payments {
 
+	public Payments() {}
+	
+	public Payments(Date dateTime, String status, Long pgReferenceId) {
+		this.dateTime = dateTime;
+		this.status = status;
+		this.pgReferenceId = pgReferenceId;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PAYMENT_ID")

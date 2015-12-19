@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import gateway.cache.PaymentGatewayCache;
+import gateway.lifecycle.PaymentGatewayCache;
 import models.PaymentGatewayInfo;
 import play.exceptions.BaseException;
 import services.serviceimpl.ServicesFactory;
@@ -24,7 +24,6 @@ public class InitializePGCache {
 		try {
 			List<PaymentGatewayInfo> pgInfos = servicesFactory.paymentGatewayInfoService.allPaymentGateways();
 			PaymentGatewayCache.getInstance().initializePaymentGatewayCache(pgInfos);
-			System.out.println("********************PG Cache Initialized !!!");
 		} catch (BaseException e) {
 			e.printStackTrace();
 		}

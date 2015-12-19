@@ -1,7 +1,7 @@
 package gateway.lifecycle;
 
-import gateway.cache.PaymentGatewayCache;
-import gateway.cache.PaymentGatewayInfoBean;
+import gateway.bean.PaymentGatewayInfoBean;
+import gateway.bean.PaymentGatewayResultBean;
 import utilities.Constants;
 
 public class PayUPaymentGateway implements PaymentGateway{
@@ -19,9 +19,9 @@ public class PayUPaymentGateway implements PaymentGateway{
 	}
 
 	@Override
-	public Boolean initialized() {
-		// TODO Auto-generated method stub
-		return null;
+	public PaymentGatewayResultBean result() {
+		PaymentGatewayResultBean resultBean = new PaymentGatewayResultBean(callbackUrl(), paymentGatewayUrl());
+		return resultBean;
 	}
 
 }
