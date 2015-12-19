@@ -1,22 +1,14 @@
 package controllers;
 
-import models.Person;
+import static play.test.Helpers.fakeApplication;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import controllers.rest.Application;
 import play.GlobalSettings;
-import play.mvc.Result;
 import play.test.WithApplication;
-import repository.PersonRepository;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-import static play.test.Helpers.*;
 
 /**
  * An integration test focused on testing our routes configuration and interactions with our controller.
@@ -30,8 +22,8 @@ public class ApplicationIT extends WithApplication {
 
     private Application app;
 
-    @Mock
-    private PersonRepository repo;
+    /*@Mock
+    private PersonRepository repo;*/
 
     @Before
     public void setUp() throws Exception {
@@ -47,7 +39,7 @@ public class ApplicationIT extends WithApplication {
         start(fakeApplication(global));
     }
 
-    @Test
+    /*@Test
     public void indexSavesDataAndReturnsId() {
         final Person person = new Person();
         person.id = SOME_ID;
@@ -58,6 +50,6 @@ public class ApplicationIT extends WithApplication {
 
         assertEquals(OK, status(result));
         assertTrue(contentAsString(result).contains(SOME_CONTENT_MESSAGE));
-    }
+    }*/
 
 }

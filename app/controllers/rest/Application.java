@@ -1,16 +1,10 @@
 package controllers.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
 import controllers.base.BaseController;
-import controllers.requestdto.UsersRequestDto;
-import controllers.responsedto.UsersResponseDto;
-import models.Person;
 import play.mvc.BodyParser;
 import play.mvc.Result;
 import services.serviceimpl.ServicesFactory;
@@ -43,13 +37,13 @@ public class Application extends BaseController {
         // interesting. Spring Data takes care of transactional concerns and the following code is all
         // executed on the same thread (a requirement of the JPA entity manager).
 
-        final Person person = new Person();
+        /*final Person person = new Person();
         person.firstname = "Bruce";
         person.surname = "Smith";
 
-        /*final Person savedPerson = personRepository.save(person);
+        final Person savedPerson = personRepository.save(person);
 
-        final Person retrievedPerson = personRepository.findOne(savedPerson.id);*/
+        final Person retrievedPerson = personRepository.findOne(savedPerson.id);
         
         final Person savedPerson = servicesFactory.personService.savePerson(person);
 
@@ -57,7 +51,7 @@ public class Application extends BaseController {
 
         // Deliver the index page with a message showing the id that was generated.
         UsersRequestDto request = new UsersRequestDto();
-        request.userType = "USER";
+        request.userType = "USER";*/
         //try {
         	/*Users user = servicesFactory.usersService.createUser("GUEST");
             Users onotherUser = servicesFactory.usersService.findUserById(user.userId);*/
@@ -65,22 +59,22 @@ public class Application extends BaseController {
         //} catch(BaseException ex) {
         	
         //}
-        return ok(views.html.index.render("Found id: " + retrievedPerson.id + " of person/people Addeed text"));
+        return ok(views.html.index.render("Found id: of person/people Addeed text"));
         
     }
     
     
-    public Result persons() {
+    /*public Result persons() {
     	
     	List<UsersResponseDto> response = null;
     	//try {
-	    	/*List<Users> users = servicesFactory.usersService.users();
+	    	List<Users> users = servicesFactory.usersService.users();
 	    	
 	    	response = new ArrayList<>();
 	    	for(Users user : users) {
 	    		UsersResponseDto aUserResponse = new UsersResponseDto(String.valueOf(user.userId), user.userType);
 	    		response.add(aUserResponse);
-	    	}*/
+	    	}
     		
     		List<Person> persons = servicesFactory.personService.persons();
 	    	
@@ -90,9 +84,9 @@ public class Application extends BaseController {
 	    		response.add(aUserResponse);
 	    	}
 	    	
-    	/*} catch (BaseException ex) {
+    	} catch (BaseException ex) {
     		
-    	}*/
+    	}
     	return convertObjectToJsonResponse(response);
-    }
+    }*/
 }

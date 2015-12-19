@@ -7,8 +7,6 @@
 
 GET     /                           @controllers.rest.Application.index
 
-GET		/persons					@controllers.rest.Application.persons
-
 GET 	/pg/list					@controllers.rest.PaymentsController.listPaymentGateways
 
 POST	/pgurl						@controllers.rest.PaymentsController.paymentGatewayUrl

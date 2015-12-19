@@ -6,15 +6,11 @@ import javax.inject.Singleton;
 
 import services.service.PaymentGatewayInfoServiceI;
 import services.service.PaymentsServiceI;
-import services.service.PersonServiceI;
 
 @Named
 @Singleton
 public class ServicesFactory {
 
-	@Inject
-	public PersonServiceI personService;
-	
 	@Inject
 	public PaymentsServiceI paymentService;
 	
