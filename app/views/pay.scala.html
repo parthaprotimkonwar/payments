@@ -1,0 +1,21 @@
+@(message: Map[String, String])
+
+<form id="myForm" action='https://test.payu.in/_payment' method='post'>
+<input type="hidden" name="firstname" value = "@message("firstname")" />
+<input type="hidden" name="lastname" value= "@message("lastname")" />
+<input type="hidden" name="surl" value="https://www.google.com" />
+<input type="hidden" name="phone" value= "@message("phone")" />
+<input type="hidden" name="key" value= "@message("key")" />
+<input type="hidden" name="hash" value = "@message("hash")" />
+<input type="hidden" name="curl" value="http://www.google.com" />
+<input type="hidden" name="furl" value="https:/www.yahoo.in" />
+<input type="hidden" name="txnid" value= "@message("txnid")" />
+<input type="hidden" name="productinfo" value = "@message("productinfo")" />
+<input type="hidden" name="amount" value= "@message("amount")" />
+<input type="hidden" name="email" value= "@message("email")" />
+<input type= "submit" style="display: none;" value="submit" />
+</form>
+
+<script type="text/javascript">
+ document.getElementById("myForm").submit();
+ </script>

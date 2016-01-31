@@ -1,7 +1,9 @@
 package controllers.rest;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,8 +26,12 @@ import gateway.lifecycle.PaymentGatewayManager;
 import models.Payments;
 import play.exceptions.BaseException;
 import play.mvc.BodyParser;
+import play.mvc.Http.RequestBody;
 import play.mvc.Result;
 import services.serviceimpl.ServicesFactory;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @Named
 @Singleton
@@ -118,6 +124,62 @@ public class PaymentsController extends BaseController{
 		}
 		return convertObjectToJsonResponse(response);
 	}
+
+	public Result payPayments() {
+		RequestBody body = request().body();
+		Map<String, String[]> formFields = body.asFormUrlEncoded();
+		String key, txnid, amount, productinfo, firstname, email, salt, sep;
+		sep = "|";
+		key = "gtKFFx";
+		txnid = "TEST-2";
+		amount = formFields.get("amount")[0];
+		productinfo = formFields.get("productinfo")[0];
+		firstname = formFields.get("firstname")[0];
+		email = formFields.get("email")[0];
+		salt = "eCwWELxi";
+		String hashString = key + sep + txnid + sep + amount + sep + productinfo + sep + firstname + sep + email + 
+				sep + sep + sep + sep + sep + sep + sep + sep + sep + sep + sep + salt;
+		
+		play.Logger.info("***********************" + hashString);
+		String hash = sha512Digest(hashString);
+		play.Logger.info("**********************" + hash);
+		Map<String, String> userInfo = new HashMap<String, String>();
+		for(Map.Entry<String, String[]> entry : formFields.entrySet()) {
+			userInfo.put(entry.getKey(), entry.getValue()[0]);
+		}
+		userInfo.put("txnid", txnid);
+		userInfo.put("hash",  hash);
+		userInfo.put("key",  key);
+		return ok(views.html.pay.render(userInfo));
+	}
+	
+	private String sha512Digest(String str) {
+		String ret;
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA-512");
+			md.update(str.getBytes());
+			
+			byte[] mdbytes = md.digest();
+		     
+	        //convert the byte to hex format method 1
+	        StringBuffer sb = new StringBuffer();
+	        for (int i = 0; i < mdbytes.length; i++) {
+	          sb.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16).substring(1));
+	        }
+	        
+	       //convert the byte to hex format method 2
+	        StringBuffer hexString = new StringBuffer();
+	    	for (int i=0;i<mdbytes.length;i++) {
+	    	  hexString.append(Integer.toHexString(0xFF & mdbytes[i]));
+	    	}
+	    	ret = sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			ret = "NULL";
+		}
+		return ret;
+	}
 	
 	private List<PaymentsBean> convertToPaymentBean(List<Payments> payments) {
 		
@@ -128,4 +190,5 @@ public class PaymentsController extends BaseController{
 		}
 		return paymentsBean;
 	}
+	
 }
