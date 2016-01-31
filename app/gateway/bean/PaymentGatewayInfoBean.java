@@ -13,6 +13,8 @@ public class PaymentGatewayInfoBean {
 		this.pgUrl = paymentGatwayInfo.pgUrl;
 		this.userName = paymentGatwayInfo.userName;
 		this.password = paymentGatwayInfo.password;
+		this.key = paymentGatwayInfo.key;
+		this.salt = paymentGatwayInfo.salt;
 		this.token = paymentGatwayInfo.token;
 		this.status = paymentGatwayInfo.status;
 		this.callbackUrl = paymentGatwayInfo.callbackUrl;
@@ -23,6 +25,8 @@ public class PaymentGatewayInfoBean {
 	public String pgUrl;
 	public String userName;
 	public String password;
+	public String key;
+	public String salt;
 	public String token;
 	public String status;
 	public String callbackUrl;

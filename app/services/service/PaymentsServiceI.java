@@ -7,7 +7,7 @@ import play.exceptions.BaseException;
 
 public interface PaymentsServiceI {
 
-	Payments insertIntoPayments(Long pgReferenceId) throws BaseException;
+	Payments insertIntoPayments(String paymentId) throws BaseException;
 	
 	Payments insertIntoPayments(Payments payments) throws BaseException;
 	

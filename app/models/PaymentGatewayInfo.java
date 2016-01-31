@@ -27,6 +27,12 @@ public class PaymentGatewayInfo {
 	@Column(name="PASSWORD", length=40, nullable=true)
 	public String password;
 	
+	@Column(name="key", length=20, nullable=true)
+	public String key;
+	
+	@Column(name="salt", length=25, nullable=true)
+	public String salt;
+	
 	@Column(name="TOKEN", length=100, nullable=true)
 	public String token;
 	
