@@ -45,8 +45,8 @@ public class PaymentsServiceImpl implements PaymentsServiceI{
 	}
 
 	@Override
-	public Payments insertIntoPayments(String paymentId) throws BaseException {
-		Payments aPayment = new Payments(new Date(), Status.SUCCESS.name(), paymentId);
+	public Payments insertIntoPayments(Long pgReferenceId) throws BaseException {
+		Payments aPayment = new Payments(new Date(), Status.SUCCESS.name(), pgReferenceId);
 		return insertIntoPayments(aPayment);
 	}
 

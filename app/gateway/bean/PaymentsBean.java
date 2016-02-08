@@ -13,7 +13,7 @@ public class PaymentsBean {
 		this.pgReferenceId = payment.pgReferenceId;
 	}
 
-	public String paymentId;
+	public Long paymentId;
 	public Date dateTime;
 	public String status;
 	public String pgReferenceId;

@@ -1,12 +1,7 @@
 package gateway.lifecycle;
 
-import gateway.bean.PaymentGatewayResultBean;
+import java.util.Map;
 
 public interface PaymentGateway {
-
-	public String paymentGatewayUrl();
-	
-	public String callbackUrl();
-	
-	public PaymentGatewayResultBean result();
+	public Map<String, String> result(Map<String, String> request, String txnid);
 }

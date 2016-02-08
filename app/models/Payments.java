@@ -19,15 +19,16 @@ public class Payments {
 
 	public Payments() {}
 	
-	public Payments(Date dateTime, String status, String paymentId) {
+	public Payments(Date dateTime, String status, Long paymentId) {
 		this.dateTime = dateTime;
 		this.status = status;
 		this.paymentId = paymentId;
 	}
 	
 	@Id
-	@Column(name="PAYMENT_ID", length=25, nullable=false)
-	public String paymentId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="PAYMENT_ID")
+	public Long paymentId;
 	
 	@Column(name="DATE_TIME")
 	@Temporal(TemporalType.TIMESTAMP)

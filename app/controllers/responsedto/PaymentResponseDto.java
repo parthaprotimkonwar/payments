@@ -3,9 +3,9 @@ package controllers.responsedto;
 public class PaymentResponseDto {
 
 	public String token;
-	public String paymentId;
+	public Long paymentId;
 	
-	public PaymentResponseDto(String token, String paymentId) {
+	public PaymentResponseDto(String token, Long paymentId) {
 		this.token = token;
 		this.paymentId = paymentId;
 	}
