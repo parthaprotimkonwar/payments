@@ -2,8 +2,8 @@ package gateway.lifecycle;
 
 import java.util.Map;
 
-import controllers.requestdto.PaymentRequestDto;
-import controllers.responsedto.PaymentResponseDto;
+import com.frugalbin.common.dto.request.payment.PaymentRequestDto;
+import com.frugalbin.common.dto.response.payment.PaymentResponseDto;
 
 public interface PaymentGateway {
 	

@@ -17,9 +17,9 @@ OPTIONS /pgurl						@controllers.rest.PaymentsController.enablecors
 
 POST	/payment/display			@controllers.rest.PaymentsController.displayPayments
 
-POST	/ticket						@controllers.rest.PaymentsController.weAreBookingYourTicket
+POST	/validatePGResponse						@controllers.rest.PaymentsController.validatePGResponse
 
-OPTIONS	/ticket						@controllers.rest.PaymentsController.enablecors
+OPTIONS	/validatePGResponse						@controllers.rest.PaymentsController.enablecors
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

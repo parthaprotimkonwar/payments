@@ -3,8 +3,9 @@ package gateway.lifecycle;
 import java.util.HashMap;
 import java.util.Map;
 
-import controllers.requestdto.PaymentRequestDto;
-import controllers.responsedto.PaymentResponseDto;
+import com.frugalbin.common.dto.request.payment.PaymentRequestDto;
+import com.frugalbin.common.dto.response.payment.PaymentResponseDto;
+
 import gateway.bean.PaymentGatewayInfoBean;
 import utilities.Constants;
 import utilities.HashCalculator;
@@ -57,6 +58,7 @@ public class PayUPaymentGateway implements PaymentGateway{
 					        "<input type='' name='productinfo' value='" + blankIfNull(request.productInfo) +"' />" + 
 					        "<input type='' name='amount' value='" + request.amount + "' />" + 
 					        "<input type='' name='email' value='"+ blankIfNull(request.email) +"' />" + 
+					        "<input type='' name='udf1' value='"+ blankIfNull(request.udf1) +"' />" + 
 					        "<input id='submitbutton' type= 'submit' value='submit'>" +
 					  "</form>";
 		return form;

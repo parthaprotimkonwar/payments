@@ -8,13 +8,14 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import com.frugalbin.common.dto.request.payment.PaymentRequestDto;
+import com.frugalbin.common.dto.response.payment.PaymentResponseDto;
+
 import controllers.base.BaseController;
 import controllers.requestdto.PGRequestDto;
-import controllers.requestdto.PaymentRequestDto;
 import controllers.responsedto.ErrorResponse;
 import controllers.responsedto.PGListResponse;
 import controllers.responsedto.PaymentListResponse;
-import controllers.responsedto.PaymentResponseDto;
 import gateway.bean.PaymentGatewayInfoBean;
 import gateway.bean.PaymentsBean;
 import gateway.lifecycle.PaymentGateway;
@@ -86,7 +87,7 @@ public class PaymentsController extends BaseController {
 	}
 	
 	@BodyParser.Of(BodyParser.Json.class)
-	public Result weAreBookingYourTicket() {
+	public Result validatePGResponse() {
 		
 		PaymentResponseDto response = null;
 		try {
