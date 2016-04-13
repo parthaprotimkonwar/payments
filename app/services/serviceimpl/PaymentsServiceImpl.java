@@ -1,20 +1,16 @@
 package services.serviceimpl;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import gateway.bean.PaymentsBean;
 import models.Payments;
 import play.exceptions.BaseException;
 import play.exceptions.ErrorConstants;
 import repository.PaymentsRepository;
 import services.service.PaymentsServiceI;
-import utilities.AppConstants.Status;
 
 @Named
 @Singleton
@@ -44,11 +40,11 @@ public class PaymentsServiceImpl implements PaymentsServiceI{
 		}
 	}
 
-	@Override
+	/*@Override
 	public Payments insertIntoPayments(Long pgReferenceId) throws BaseException {
 		Payments aPayment = new Payments(new Date(), Status.SUCCESS.name(), pgReferenceId);
 		return insertIntoPayments(aPayment);
-	}
+	}*/
 
 	@Override
 	public List<Payments> findAllPayments() throws BaseException {

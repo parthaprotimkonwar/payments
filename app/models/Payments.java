@@ -19,16 +19,19 @@ public class Payments {
 
 	public Payments() {}
 	
-	public Payments(Date dateTime, String status, Long paymentId) {
+	public Payments(Date dateTime, String status, String pgReferenceId) {
 		this.dateTime = dateTime;
 		this.status = status;
-		this.paymentId = paymentId;
+		this.pgReferenceId = pgReferenceId;
 	}
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="PAYMENT_ID")
-	public Long paymentId;
+	@Column(name="ID")
+	public Long id;
+	
+	@Column(name="PAYMENT_ID", length=35, nullable=true)
+	public String paymentId;
 	
 	@Column(name="DATE_TIME")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -37,6 +40,6 @@ public class Payments {
 	@Column(name="STATUS", length=10, nullable=true)
 	public String status;
 	
-	@Column(name="PG_REFERENCE_ID", length=25, nullable=true)
+	@Column(name="PG_REFERENCE_ID", length=35, nullable=true)
 	public String pgReferenceId;
 }

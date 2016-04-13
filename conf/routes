@@ -11,9 +11,15 @@ GET 	/pg/list					@controllers.rest.PaymentsController.listPaymentGateways
 
 POST	/pgurl						@controllers.rest.PaymentsController.paymentGatewayUrl
 
-POST	/payment/create				@controllers.rest.PaymentsController.insertPayment
+OPTIONS /pgurl						@controllers.rest.PaymentsController.enablecors
+
+#POST	/payment/create				@controllers.rest.PaymentsController.insertPayment
 
 POST	/payment/display			@controllers.rest.PaymentsController.displayPayments
+
+POST	/ticket						@controllers.rest.PaymentsController.weAreBookingYourTicket
+
+OPTIONS	/ticket						@controllers.rest.PaymentsController.enablecors
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

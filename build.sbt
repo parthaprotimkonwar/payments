@@ -1,4 +1,4 @@
-name := "authorization"
+name := "payment"
 
 version := "1.0-SNAPSHOT"
 

@@ -22,8 +22,17 @@ public class InitializePGCache {
 	@PostConstruct
 	void initializeCache() {
 		try {
+			
+			//PaymentGatewayInfo pgInfo = new PaymentGatewayInfo("PAYU", "Pay U", "", "", "gtKFFx", "eCwWELxi", "", "ACTIVE", "http://ec2-52-37-173-141.us-west-2.compute.amazonaws.com:8080/frugalbin/jsp/success.jsp", "http://www.google.com", "http://www.flipkart.com");
+			//PaymentGatewayInfo pgInfo = new PaymentGatewayInfo("PAYU", "Pay U", "", "", "gtKFFx", "eCwWELxi", "", "ACTIVE", "http://localhost:8080/FrugalbinUI/jsp/success.jsp", "http://www.google.com", "http://www.flipkart.com");
+			
+			
+			PaymentGatewayInfo pgInfo = new PaymentGatewayInfo("PAYU", "Pay U", "", "", "gtKFFx", "eCwWELxi", "", "ACTIVE", "http://ec2-54-191-122-205.us-west-2.compute.amazonaws.com:8080/frugalbin/jsp/success.jsp", "http://www.google.com", "http://www.flipkart.com");
+			
+			servicesFactory.paymentGatewayInfoService.insertIntoPaymentGateway(pgInfo);
 			List<PaymentGatewayInfo> pgInfos = servicesFactory.paymentGatewayInfoService.allPaymentGateways();
 			PaymentGatewayCache.getInstance().initializePaymentGatewayCache(pgInfos);
+			System.out.println("Cache initialized");
 		} catch (BaseException e) {
 			e.printStackTrace();
 		}
