@@ -1,6 +1,7 @@
 package controllers.rest;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -65,13 +66,13 @@ public class PaymentsController extends BaseController {
 			payment.status = AppConstants.Status.ACTIVE.name();
 			payment = serviceFactory.paymentService.insertIntoPayments(payment);
 			PaymentGateway paymentGateway = manager.paymentGatewayInstance(paymentRequest.pgId);
-			responseParams = paymentGateway.result(paymentRequest, "FRUGAL1" + payment.id);
+			responseParams = paymentGateway.result(paymentRequest, "FRUGAL1" + new Date().getTime() + payment.id);
 			responseHtml = paymentGateway.generateStringHtmlForm(paymentRequest, responseParams);
 		} catch (Exception e) {
 			ErrorResponse errorResponse = unknownErrorResponse();
 			return errorObjectToJsonResponse(errorResponse);
 		}
-		response().setHeader("Access-Control-Allow-Origin", request().getHeader("Origin"));
+//		response().setHeader("Access-Control-Allow-Origin", request().getHeader("Origin"));
 		return ok(responseHtml);
 	}
 
@@ -106,7 +107,7 @@ public class PaymentsController extends BaseController {
 		System.out.println("TICKET BOOKED");
 		System.out.println("Origin : " + request().getHeader("Origin"));
 		
-		response().setHeader("Access-Control-Allow-Origin", request().getHeader("Origin"));
+//		response().setHeader("Access-Control-Allow-Origin", request().getHeader("Origin"));
 		
 		return ok(request().body().asJson());
 	}
