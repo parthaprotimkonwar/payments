@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 
 import com.frugalbin.common.dto.request.payment.PaymentRequestDto;
 import com.frugalbin.common.dto.response.payment.PaymentResponseDto;
+import com.frugalbin.common.dto.response.payment.PaymentValidationResponse;
 
 import controllers.base.BaseController;
 import controllers.requestdto.PGRequestDto;
@@ -90,18 +91,20 @@ public class PaymentsController extends BaseController {
 	@BodyParser.Of(BodyParser.Json.class)
 	public Result validatePGResponse() {
 		
-		PaymentResponseDto response = null;
+		PaymentResponseDto pgResponse = null;
+		PaymentValidationResponse response = new PaymentValidationResponse();
 		try {
-			response = convertRequestBodyToObject(request().body(), PaymentResponseDto.class);
+			pgResponse = convertRequestBodyToObject(request().body(), PaymentResponseDto.class);
 			PaymentGatewayManager manager = PaymentGatewayManager.getInstance();
-			PaymentGateway paymentGateway = manager.paymentGatewayInstance(response.pgid);
-			Boolean status = paymentGateway.validatePGResponse(response);
+			PaymentGateway paymentGateway = manager.paymentGatewayInstance(pgResponse.pgid);
+			Boolean status = paymentGateway.validatePGResponse(pgResponse);
 			
+			response.setIsValid(status);
 			System.out.println("Payment Status : " + status);
 			
 		} catch (BaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.setIsValid(false);
+			response.setMessage(e.getErrorMessage());
 		}
 		
 		System.out.println("TICKET BOOKED");
@@ -109,7 +112,7 @@ public class PaymentsController extends BaseController {
 		
 //		response().setHeader("Access-Control-Allow-Origin", request().getHeader("Origin"));
 		
-		return ok(request().body().asJson());
+		return convertObjectToJsonResponse(response);
 	}
 	
 	/**
